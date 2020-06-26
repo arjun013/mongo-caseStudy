@@ -48,23 +48,28 @@
                         <h2><%=books.title%></h2>
                         <h4 class="author"><%=books.author%></h4> 
                         <h6><%=books.genre%>  <h6>
-                            <div  class="row">
-                                
-                                <%if(user==='admin'){%>
-                                <div class="col-4">
+                            <%if(user==='admin'){%>
+                                <div class="col-12">
                                     <form action="/books/delete<%=books._id%>" method="POST">
-                                        <button class="btn btn-sm btn-secondary m-4">DELETE</button>
+                                        <button type="button" class="btn btn-block btn-secondary m-4" onclick="confirmation();">
+                                            DELETE
+                                        </button>
+                                        <div id="confirm" hidden="true">
+                                            <h6 class="text-center">Are you sure to delete<br><mark> <%=books.title%> </mark> <br>from database?</h6>
+                                           <button type="submit" class="btn  btn-primary m-4">CONFIRM</button>
+                                           <button type="button" class="btn  btn-secondary m-4" onclick="confirmation();">
+                                                CANCEL
+                                           </button> 
+                                        </div>
                                     </form>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12">
                                     <form action="/books/update<%=books._id%>" method="POST">
-                                        <button class="btn btn-sm btn-primary m-4">UPDATE</button>
+                                        <button class="btn btn-block btn-primary m-4">UPDATE</button>
                                     </form>
                                 </div>
                                  
-                                <%}%>                               
-                            </div>
-                         
+                                <%}%>                      
                         
                     </label>
                 </div> 
@@ -89,6 +94,14 @@
     <footer>
         &copy;ICT Kerala 2020 & Arjun P S
     </footer>
-    
+    <script type="text/javascript">
+        const confirm = document.getElementById("confirm");
+        let hideIt=false;
+        function confirmation(){
+            if(hideIt)   confirm.setAttribute("hidden","true")
+            else         confirm.removeAttribute("hidden","true")
+                hideIt=!hideIt;
+        }
+    </script>
 </body>
 </html>

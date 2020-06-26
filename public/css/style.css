@@ -175,3 +175,15 @@ footer{
     max-width: 200px;
 }
 
+#confirm{
+    padding: 20px 5px;
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    background: #fff;
+    z-index: 1;
+    width: 320px;
+    height: 200px;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}

@@ -39,6 +39,10 @@
         <!-- show case -->
         
         <div class="container">
+            <!-- setting default page -->
+            <%if(books.length==0){%>
+                <h3 class="text-center">admin can add and update books</h3>
+            <%}%>
         <%for(i=0 ; i < books.length; i++){%>
             <div class="row box">
                 <div class="col-9 col-md-3">

@@ -3,17 +3,20 @@ const upload = require("../model/multer.js");
 const bookRouter = express.Router();
 const BookData = require("../model/BookData");
 const fs = require("fs");
+const  logged = require('./logged.js');//check logged in before get page
 
 const router = allNav => {
 	//get books page
 	bookRouter.get("/",(req,res) =>{
-		BookData.find()
-		.then( books => {
+
+		logged(res,req.session.currentUser,()=>{//access only if logged in
+			BookData.find()
+			.then( books => {
 			let nav;
 			if (req.session.currentUser == 'admin') {
 				 nav = allNav.filter( elem => elem.show.includes('admin'));
 			}else{
-				 nav = allNav.filter( elem => elem.show.includes('user'));
+				 nav = allNav.filter( elem => elem.show.includes('user'));//hide add book link
 			}
 			res.render("books",{
 			books,nav,
@@ -21,16 +24,18 @@ const router = allNav => {
 			head :"BookS"
 			})
 		});
+		})
 
 	});
 
 	//get single book page
-	bookRouter.get("/:id",(req,res) =>{
-		const id = req.params.id;
-		BookData.findOne( { _id : id } )
-		.then( books => {
-			let nav;
 
+	bookRouter.get("/:id",(req,res) =>{
+		logged(res,req.session.currentUser,()=>{
+			const id = req.params.id;
+			BookData.findOne( { _id : id } )
+			.then( books => {
+			let nav;
 			const user = req.session.currentUser;
 			if (user == 'admin') {
 				 nav = allNav.filter( elem => elem.show.includes('admin'));
@@ -44,7 +49,8 @@ const router = allNav => {
 			books,
 			user
 			})
-		})		
+		})
+		})				
 	});
 
 	//post request for updation or deletion
@@ -116,7 +122,7 @@ const router = allNav => {
 						//ensure only updated fields are changed
 						for(let fld in currentBook){
 							if(currentBook[fld]===''||currentBook[fld]===book[fld]){
-								delete currentBook[fld];//deleting unupdated field
+								delete currentBook[fld];//deleting fields which didnt change
 							}
 						}
 						//updating database
@@ -124,7 +130,7 @@ const router = allNav => {
 								if(err){
 									console.log(err)
 								}else{
-									console.log('success')
+									console.log()
 								}
 							})
 						res.redirect("/books")
@@ -134,7 +140,7 @@ const router = allNav => {
 						console.log(err);
 						res.redirect("/home")
 					}							
-					})
+					}).catch(err => console.log(err))
 					}				
 					})				
 				}

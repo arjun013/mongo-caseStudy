@@ -4,12 +4,16 @@ const ejs = require("ejs");
 const homeRouter = express.Router();
 var currentUser='';
 const SignData = require("../model/signupData.js");
-// const MongoStore = require('connect-mongo')(session);
+const  logged = require('./logged.js');
 
 const router = (allNav) =>{
 
+
 homeRouter.get("/",(req,res) =>{
-      let nav;
+
+  //deny access if not logged in
+  logged(res,req.session.currentUser,()=>{
+    let nav;
       if (req.session.currentUser == 'admin') {
          nav = allNav.filter( elem => elem.show.includes('admin'));
       }else{
@@ -18,20 +22,31 @@ homeRouter.get("/",(req,res) =>{
       res.render("home",{
       nav,
       title:"home",
-      head:`${req.session.currentUser}`
+      head:`${currentUser} home`
     })
   })
+      
+})
+
 //login request
 homeRouter.post('/', function(req, res) {
 		var logger = {
 				user : req.body.username,
 				pass : req.body.password			
 		}
-				SignData.findOne({username : logger.user,password:logger.pass})
+        //login should recieve  username or email
+				SignData.findOne({
+          $and : [
+            {password:logger.pass},
+            {$or :[{username:logger.user},{email:logger.user}]}
+          ]
+        })
   				.then( user =>{
             if(!user) throw err;
-  					req.session.currentUser = logger.user;
+            //checks admin or not for complete access
+  					req.session.currentUser = user.username;
   					let nav;
+            currentUser=user.name;
   					if (req.session.currentUser == 'admin') {
   						 nav = allNav.filter( elem => elem.show.includes('admin'));
   					}else{
@@ -41,11 +56,12 @@ homeRouter.post('/', function(req, res) {
 					res.render("home",{
 					nav,
 					title:"home",
-					head:`${req.session.currentUser}`
+					head:`${currentUser} home`
 					})
 					
   				}).catch( (err) => {
-  					res.redirect("/login");
+            //failed login redirects to login 
+  					res.redirect("/login/retry");
   				})
   		
 	});

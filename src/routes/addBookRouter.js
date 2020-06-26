@@ -3,7 +3,7 @@ const ejs = require("ejs");
 const upload = require("../model/multer.js");
 const BookData = require("../model/BookData");
 const addBookRouter = express.Router();
-
+const  logged = require('./logged.js');
 
 const fields = [
 		{			type:"text",			id:"name",			label:"BOOK NAME",			accept:""		},
@@ -14,14 +14,23 @@ const fields = [
 	]
 
 const router = allNav =>{
+
 	addBookRouter.get("/",(req,res) =>{
-		const nav = allNav.filter( elem => elem.show.includes('admin'));
-		res.render("addBook",{
-			nav,
-			fields,
-			title:"add book",
-			head:"New Book"
+		logged(res,req.session.currentUser,()=>{
+				//only admin should access
+				if(req.session.currentUser=='admin'){
+					const nav = allNav.filter( elem => elem.show.includes('admin'));
+					res.render("addBook",{
+					nav,
+					fields,
+					title:"add book",
+					head:"New Book"
+				})
+				}else{//back to homepage if user is not admin
+					res.redirect('/home');
+				}
 		})
+		
 	})
 	addBookRouter.post('/book', function(req, res) {
 		upload(req,res,(err) =>{

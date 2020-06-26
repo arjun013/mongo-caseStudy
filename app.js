@@ -3,6 +3,7 @@ const ejs = require("ejs");
 const path = require("path");
 const session = require('express-session');
 const crypto = require("crypto");
+
 const allNav = [	//show is to decide which one should show in correspoding page
 	{		link:"/",	name:"DASH",	show:['home']	},
 	{		link:"/home",		name:"HOME",		show:['user','admin']	},
