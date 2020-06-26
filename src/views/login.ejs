@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/log.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div>
+    <nav >
+        <button type="button" class="btn btn-lg  text-white float-right m-4"><i class="fa fa-bars"></i></button>  
+        <ul >
+            <%for( i = 0; i < nav.length; i++){%>
+                <li><a href="<%=nav[i].link%>"><%=nav[i].name%></a></li>
+            <%}%>
+        </ul>
+        
+    </nav>
+    </div>
+
+    <!-- Header section -->
+    <div class="headers">
+        <header>
+            <div class="rect"></div>
+            <h1 class="heading">LibrariaN</h1>        
+        </header>
+    </div>
+
+    <!-- Body content-->
+    <div class="content" style="background-image: url('img/bg2.jpg');">
+        <!-- show case -->
+        <form action="/home" method="POST" onsubmit="return passValid();">
+        <div class="container" >
+            <div class="login">
+            <div class="row box1">
+                <div class="col">
+                        <h1 class="heading1"><%=head%></h1> 
+                 </div>
+            </div><br><br><hr class=" border-white">
+            <div class="row box1">
+                <div class="col">
+                    <input type="text" name="username" id="user" required><label for="user">USERNAME</label>
+                    
+                </div>
+            </div>
+            <div class="row box1">
+                <div class="col">
+                        <input type="password" name="password" id="pass" required><label for="pass">PASSWORD</label>
+                 </div><br>
+                 <div id="passMsg" class="msg1 text-weight-bold"></div>
+                 
+            </div>
+            <br>
+            <div class="row box1">
+                    <div class="col">
+                            <button  class="btns"><b>Log In</b></button>
+                    </div>
+            </div>
+            </div><hr>
+            <div class="row box1">
+                    <div class="col">
+                            <div class="icons text-center">
+                                    <h3 class="text-white">Or Connect With</h3><br>
+                                    <a href="#" class="icons"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="icons"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="icons"><i class="fa fa-google-plus"></i></a>
+                                    
+                            </div><br>
+                        <br>
+                        <h5 class="text-center bg-info  p-2">Need an account?  <a href="/signup" class="text-white"><u> signup</u></a></h5>
+                    </div>
+            </div>
+        </div>
+
+            <br><br>
+        </form>
+    </div>
+
+    <footer>
+        &copy;ICT Kerala 2020 & Arjun P S
+    </footer>
+
+    <script src="js/login.js"></script>
+    
+</body>
+
+</html>

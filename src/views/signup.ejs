@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/log.css">
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <button type="button" class="btn btn-lg  text-white float-right m-4"><i class="fa fa-bars"></i></button>  
+        <ul>
+            <%for( i = 0; i < nav.length; i++){%>
+                <li><a href="<%=nav[i].link%>"><%=nav[i].name%></a></li>
+            <%}%>
+        </ul>
+        
+    </nav>
+
+    <!-- Header section -->
+    <div class="headers">
+        <header>
+            <div class="rect"></div>
+            <h1 class="heading"><%=head%></h1>        
+        </header>
+    </div>
+
+    <!-- Body content-->
+    <div class="content" style="background-image: url('img/bg3.jpg');">
+        
+        <!-- show case -->
+
+        <form action="/signup/login"  method="POST" onsubmit="return validate();">
+        <div class="row">
+            <div class="col-1 col-sm-1 col-md-2 col-lg-2"></div>
+            <div class="col-10 col-sm-10 col-md-8 col-lg-8 main">
+                    <div class="row box2">
+                            <div class="col text-center text-danger m-4"><br>
+                                <h2>ENTER YOUR DETAILS</h2><hr class="border-danger">
+                             </div>
+                        </div>
+                        <div class="row box2">
+                            <div class="col">
+                                <input type="text" name="name" id="name" required>
+                                    <label for="user">NAME</label>
+                            </div>
+                        </div><hr>
+                        <div class="row box2">
+                            <div class="col">
+                                <input type="text" name="email" id="mail" required>
+                                    <label for="pass">EMAIL</label>
+                                    
+                             </div>
+                        </div><hr>
+            
+                        <div class="row box2">
+                            <div class="col">
+                                    <input type="text" name="mobile" id="mobile" required>
+                                    <label for="user">MOBILE</label>
+                                    <div id="mobMsg" class="msg lead"></div>
+                            </div>
+                        </div><hr>
+                        <div class="row box2">
+                            <div class="col">
+                                    <input type="date" name="dob" id="dob" required >
+                                    <label for="user">DATE OF BIRTH</label>
+                            </div>
+                        </div><hr>
+                        <div class="row box2">
+                            <div class="col">
+                                    
+                                <input type="text" name="username" id="user" required>
+                                <label for="user">SELECT USERNAME</label>
+                            </div>
+                        </div><hr>
+                        <div class="row box2">
+                            <div class="col">
+                                    
+                                    <input type="password" name="password" id="pass" required><button type="button" id="eye" onclick="visible();"><i class="fa fa-eye"  ></i></button>
+                                    <label for="pass" id="visible">SELECT PASSWORD</label>
+                                    <div id="passMsg" class="msg lead"></div>
+                             </div>
+                        </div><hr>
+                        <div class="row box2">
+                                <div class="col">
+                                        <input type="password" id="pass1" required>
+                                        <label for="user">CONFIRM PASSWORD</label>
+                                        <div id="pass1Msg" class="msg lead"></div>
+                                </div>
+                        </div>
+            
+                        <hr><br>
+                       <div class="row box1">
+                                <div class="col">
+                                    <button  class="btns1"><b>Join Now</b></button>
+                                </div>
+                        </div><hr>
+                        <h5 class=" p-2  text-center">Already Joined? <a href="/login" class="text-danger"><u>Click here to Sign In</u></a></h5>
+                                    
+            
+                    </div>
+            
+            
+                    <br><br>
+
+            </div>
+            <div class="col-1 col-sm-1 col-md-2 col-lg-2"></div>
+            
+        </form><br>
+    </div>
+    
+    <footer>
+        &copy;ICT Kerala 2020 & Arjun P S
+    </footer>
+    <script src="js/signup.js"></script>
+    
+</body>
+
+</html>

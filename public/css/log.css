@@ -1,0 +1,142 @@
+
+.box1 .heading1{
+    position: absolute;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 45px;
+    margin: 60px 0px 40px 0;
+    left: 30%;
+    color: white;
+
+}
+
+.box1{
+    min-height: 80px;
+}
+header{
+    background: rgb(23, 6, 95);
+}
+nav{
+    background: rgb(10, 12, 121);
+}
+nav ul li a.active,nav ul li a:hover{
+    background: rgb(40, 38, 204);
+
+}
+.rect{
+    background: rgb(10, 12, 121);
+    border: 1px solid rgb(12, 8, 65);
+}
+footer{
+    background: rgb(3, 3, 83);
+}
+.container{
+    margin: -30px 15% 0px 15%;
+    width: 70%;
+    background: linear-gradient(to top,darkblue,  rgb(36, 36, 218));
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        margin: -30px 5% 0px 5%;
+        width: 90%;
+    }
+    
+}
+
+  /* .login{
+    border: 2px solid darkblue;
+    margin: 30px 2% ;
+    background: linear-gradient(to top,  blue,skyblue);
+  } */
+.box1 input{
+    width: 50%;
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid white;
+    background: none;
+    margin-left: 25%;
+    margin: 30px 0 30px 25%;
+    padding-left: 20px;
+    color: white;
+    outline: none;
+}
+.box1 label{
+    color: white;
+    margin-left: -48%;
+    transition: ease-in-out 1s;
+}
+.box1 input:focus~label,.box1 input:valid~label{
+    color: white;
+    font-weight: bold;
+    margin-left: 0%;
+    margin-right: -10%;
+    
+   
+}
+.icons{
+    margin: 0 20px;
+    padding: 0 6px;
+    
+    
+}
+.icons i:hover{
+    transform: scale(1.2);
+    
+    
+}
+.fa-facebook{
+    background: #3b5998;
+    color: white;
+    padding: 3px 5px 3px 15px;
+    border-radius: 2px;
+    font-size: 30px;
+    border: 1px solid white;
+}
+.fa-twitter{
+    background: #08a0e9;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 50%;
+    font-size: 30px;
+    border: 1px solid white;
+}
+.fa-google-plus{
+    background: #db4437;
+    color: white;
+    padding: 10px 8px;
+    border-radius: 50%;
+    font-size: 25px;
+    border: 1px solid white;
+}
+
+.btns{
+    margin:30px 38%;
+    width: 24%;
+    height: 40px;
+    background-image: linear-gradient(to right,blue , darkblue);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.btns:hover{
+    /* background: white;
+    color: rgb(18, 18, 78);
+    border-color: rgb(18, 18, 78); */
+    cursor: pointer;
+    font-size: 18px;
+    
+}
+/* .icons h3{
+    background: rgb(29, 99, 179);
+    
+} */
+.container hr{
+    border-color: #777;
+}
+.msg1{
+    position: absolute;
+    margin: 70px 30%;
+    color: white;
+}

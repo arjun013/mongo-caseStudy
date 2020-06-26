@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <button type="button" class="btn btn-lg  text-white float-right m-4"><i class="fa fa-bars"></i></button>  
+            <%for( i = 0; i < nav.length; i++){%>
+                <li><a href="<%=nav[i].link%>"><%=nav[i].name%></a></li>
+            <%}%>
+        </ul>
+        
+    </nav>
+
+    <!-- Header section -->
+    <div class="headers">
+        <header>
+            <div class="rect"></div>
+            <h1 class="heading"><%=head%></h1>        
+        </header>
+    </div>
+
+    <!-- Body content-->
+    <div class="content" style="background-image: url('img/bg1.jpg');">
+        <!-- show case -->
+        <div class="container">
+            <div class="row box">
+                <div class="col-10 col-md-3">
+                    <img src="img/line1.jpg" alt="">
+                </div>
+                <div class="col-10 col-md-7">
+                    <label for=""><h2>Your Digital Librarian. Access from anywhere.</h2></label>
+                </div>
+            </div><hr>
+            <div class="row box">
+                <div class="col-10 col-md-3">
+                    <img src="img/line2.png" alt="">
+                </div>
+                <div class="col-10 col-md-7">
+                    <label for=""><h2>Scalable and user friendly. Easy to manage.</h2></label>
+                </div>
+            </div><hr>
+            <div class="row box">
+                    <div class="col-10 col-md-3">
+                            <img src="img/line3.png" alt="">
+                    </div>
+                    <div class="col-10 col-md-7">
+                            <label for=""><h2>One time login.Entirely free of cost.</h2></label>
+                    </div>
+            </div><hr>
+            <button type="button" class="btn btn-primary float-right">more</button><br><br><br>
+        </div>
+
+        <!-- social media links -->
+        <div class="row ">
+            <div class="col follow">
+                <h2>Follow Us</h2><br>
+                <div class="social">
+                    <a href="#" class="social1"><i class="fa fa-twitter"></i> Twitter</a>
+                    <a href="#" class="social2"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a href="#" class="social3"><i class="fa fa-google-plus"> Google +</i></a>
+                </div>    
+            </div>
+        </div><br><br>
+    </div>
+
+    <footer>
+        &copy;ICT Kerala 2020 & Arjun P S
+    </footer>
+    
+</body>
+</html>
